@@ -95,7 +95,7 @@ async function get_accesstoken() {
             if (data.errcode !== 0) {
                 throw new Error('获取出错了');
             }
-            WorkerKV.put(WeCom_Token_Key, data.access_token, { expirationTtl: expires_in - 300 })
+            WorkerKV.put(WeCom_Token_Key, data.access_token, { expirationTtl: data.expires_in - 300 })
             return data.access_token;
         }
     ).catch(
